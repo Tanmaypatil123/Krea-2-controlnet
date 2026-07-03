@@ -1,0 +1,11 @@
+torch>=2.8
+torchvision
+transformers>=5.0
+diffusers>=0.36
+safetensors
+einops
+pillow
+numpy
+huggingface_hub
+accelerate
+sentencepiece
