@@ -23,7 +23,7 @@ Depth-conditioned generation for [Krea-2](https://github.com/krea-ai/krea-2). Gi
 
 | file | base trained on | size |
 |---|---|---|
-| [`depth-control-lora.safetensors`](https://huggingface.co/Patil/Krea-2-controlnet/blob/main/depth-control-lora.safetensors) | krea/Krea-2-Raw | 862MB |
+| [`depth-control-lora.safetensors`](https://huggingface.co/Patil/Krea-2-depth-controlnet/blob/main/depth-control-lora.safetensors) | krea/Krea-2-Raw | 862MB |
 
 ## Setup
 
@@ -32,7 +32,7 @@ git clone https://github.com/Tanmaypatil123/Krea-2-controlnet.git
 cd Krea-2-controlnet
 pip install -r requirements.txt
 
-hf download Patil/Krea-2-controlnet depth-control-lora.safetensors --local-dir .
+hf download Patil/Krea-2-depth-controlnet depth-control-lora.safetensors --local-dir .
 ```
 
 Requires one GPU with **≥48GB VRAM** (A100-80 / H100 / B200): 13B DiT in bf16 (26GB) + Qwen3-VL-4B text encoder (8GB) + VAE + Depth-Anything-V2. The Krea-2 base checkpoint (26GB) and auxiliary models download automatically from HF on first run.
