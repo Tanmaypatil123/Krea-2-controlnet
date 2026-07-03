@@ -1,16 +1,3 @@
----
-license: other
-license_name: krea-2-community-license
-license_link: https://www.krea.ai/krea-2-licensing
-base_model: krea/Krea-2-Raw
-pipeline_tag: image-to-image
-tags:
-  - controlnet
-  - lora
-  - depth
-  - krea-2
-  - flow-matching
----
 
 # Krea-2 Depth ControlNet-LoRA
 
