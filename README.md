@@ -7,10 +7,6 @@ Depth-conditioned generation for [Krea-2](https://github.com/krea-ai/krea-2). Gi
 - Single 862MB LoRA file (rank 64 + expanded input projection), base stays frozen
 - Depth consistency (Pearson corr. of input depth vs. depth of generated image): **0.98** with no prompt, **0.99** with prompts
 
-| turbo (8 steps) | raw (28 steps, cfg 3.5) |
-|---|---|
-| ![turbo](assets/turbo_strip.png) | ![raw](assets/raw_strip.png) |
-
 *Each strip: init image → extracted depth → generated output.*
 
 ## Examples
@@ -34,9 +30,6 @@ pip install -r requirements.txt
 
 hf download Patil/Krea-2-depth-controlnet depth-control-lora.safetensors --local-dir .
 ```
-
-Requires one GPU with **≥48GB VRAM** (A100-80 / H100 / B200): 13B DiT in bf16 (26GB) + Qwen3-VL-4B text encoder (8GB) + VAE + Depth-Anything-V2. The Krea-2 base checkpoint (26GB) and auxiliary models download automatically from HF on first run.
-
 ## Inference
 
 ```bash
