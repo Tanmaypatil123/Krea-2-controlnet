@@ -1,0 +1,6 @@
+# training extras on top of the root requirements
+-r ../requirements.txt
+wandb            # optional: loss curves + validation images
+opencv-python    # --control-type canny
+pyarrow          # --source hf (parquet streaming)
+fsspec
