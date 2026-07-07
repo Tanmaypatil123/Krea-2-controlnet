@@ -89,10 +89,24 @@ out.save("output.png")
 - `--lora-scale` below 1.0 relaxes structure adherence; above 1.0 tightens it at some quality cost.
 - Krea-2-Raw generates up to ~1K resolution; outputs are capped at the ~1MP buckets.
 
+## Training your own ControlNet-LoRA
+
+The training code is in [`trainer/`](trainer/) and is **control-type agnostic**: the same recipe trains depth, canny, tile, gray, or any custom pixel-aligned control signal. See [trainer/README.md](trainer/README.md) for data preparation (local folder or HF dataset), the shard format, and training instructions.
+
+```bash
+# example: canny ControlNet-LoRA from a folder of captioned images
+python trainer/prepare_data.py --source folder --input-dir ./my_images \
+    --out-dir ./data --control-type canny
+python trainer/train_control_lora.py --data-dir ./data --ckpt-dir ./ckpts \
+    --raw-ckpt raw.safetensors --control-type canny
+```
+
 ## Files
 
 - `inference.py` — CLI
 - `pipeline.py` — full pipeline: LoRA surgery, Qwen3-VL conditioner, VAE, depth estimator, flow sampler with control injection
 - `mmdit.py` — unmodified DiT definition from the [krea-2 repo](https://github.com/krea-ai/krea-2)
+- `k2_lora.py` — model surgery: expanded input projection + LoRA injection (used by the trainer)
+- `trainer/` — data prep + training for any control type ([docs](trainer/README.md))
 
-Model weights are subject to the [Krea 2 community license](https://www.krea.ai/krea-2-licensing). Training code will be released separately.
+Model weights are subject to the [Krea 2 community license](https://www.krea.ai/krea-2-licensing).
